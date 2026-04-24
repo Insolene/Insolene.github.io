@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Man | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        header { position: fixed; top: 0; width: 100%; background: #fff; display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; z-index: 1000; border-bottom: 1px solid #eee; }
+        .logo { font-family: 'Oswald', sans-serif; font-size: 24px; letter-spacing: 2px; text-decoration: none; color: #000; }
+        nav a { margin-left: 30px; text-decoration: none; color: #666; font-size: 12px; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover, nav a.active { color: #000; font-weight: 700; }
+
+        .banner { 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?auto=format&fit=crop&q=80') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; position: relative;
+        }
+        .banner::before { content: "HERO"; position: absolute; font-family: 'Oswald', sans-serif; font-size: 25vw; color: rgba(255, 255, 255, 0.05); z-index: 0; pointer-events: none; }
+        .banner-content { z-index: 1; }
+        .banner h1 { font-family: 'Oswald', sans-serif; font-size: 80px; letter-spacing: 8px; }
+        .btn { background: #fff; color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; transition: 0.3s; }
+        .btn:hover { background: #000; color: #fff; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">FLOW MAN</a>
+        <nav>
+            <a href="index.html" class="active">INÍCIO</a>
+            <a href="produtos.html">PRODUTOS</a>
+            <a href="sobre.html">SOBRE</a>
+            <a href="contato.html">CONTATO</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <div class="banner-content">
+            <h1>FLOW MAN</h1>
+            <p>Estilo casual com personalidade. Eleve o seu estilo!</p>
+            <a href="produtos.html" class="btn">VER PRODUTOS &rarr;</a>
+            <a href="https://www.instagram.com/use.flowmen/" target="_blank" class="btn btn-outline">INSTAGRAM</a>
+        </div>
+    </section>
+</body>
+</html>

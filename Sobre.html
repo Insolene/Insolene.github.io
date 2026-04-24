@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Man | Sobre Nós</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body {
+        background-color: #f4f4f4;
+        background-image:  linear-gradient(30deg, #eeeeee 12%, transparent 12.5%, transparent 87%, #eeeeee 87.5%, #eeeeee), 
+                           linear-gradient(150deg, #eeeeee 12%, transparent 12.5%, transparent 87%, #eeeeee 87.5%, #eeeeee), 
+                           linear-gradient(30deg, #eeeeee 12%, transparent 12.5%, transparent 87%, #eeeeee 87.5%, #eeeeee), 
+                           linear-gradient(150deg, #eeeeee 12%, transparent 12.5%, transparent 87%, #eeeeee 87.5%, #eeeeee), 
+                           linear-gradient(60deg, #e5e5e5 25%, transparent 25.5%, transparent 75%, #e5e5e5 75%, #e5e5e5), 
+                           linear-gradient(60deg, #e5e5e5 25%, transparent 25.5%, transparent 75%, #e5e5e5 75%, #e5e5e5);
+        background-size: 80px 140px; 
+        background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    }
+        header {position: sticky;top: 0;width: 100%;background: #fff;display: flex;justify-content: space-between;align-items: center;padding: 15px 60px;z-index: 1000;border-bottom: 1px solid #ddd;}
+        .logo { font-family: 'Oswald', sans-serif; font-size: 24px; letter-spacing: 2px; text-decoration: none; color: #000; }
+        nav a { margin-left: 30px; text-decoration: none; color: #666; font-size: 12px; text-transform: uppercase; }
+        nav a:hover, nav a.active { color: #000; font-weight: 700; }
+
+
+        .container { padding: 80px 10%; text-align: center; }
+        .titulo-secao { font-family: 'Oswald', sans-serif; font-size: 32px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+        .subtitulo { color: #888; font-size: 14px; margin-bottom: 40px; }
+        
+        .nossa-historia { 
+            background: #f9f9f9; padding: 40px; border: 1px solid #eee; 
+            max-width: 800px; margin: 0 auto 60px; text-align: left;
+        }
+        .nossa-historia h4 { font-family: 'Oswald', sans-serif; margin-bottom: 20px; text-transform: uppercase; }
+        .nossa-historia p { font-size: 14px; color: #666; line-height: 1.8; margin-bottom: 20px; }
+
+        /* Grid de Diferenciais */
+        .diferenciais { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .card-sobre { 
+            background: #fff; border: 1px solid #eee; padding: 40px 20px; 
+            width: 280px; text-align: center; transition: 0.3s;
+        }
+        .card-sobre:hover { border-color: #000; }
+        .icon-box { 
+            background: #000; color: #fff; width: 45px; height: 45px; 
+            margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+        }
+        .card-sobre h4 { font-family: 'Oswald', sans-serif; font-size: 16px; margin-bottom: 10px; text-transform: uppercase; }
+        .card-sobre p { font-size: 13px; color: #888; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">FLOW MAN</a>
+        <nav>
+            <a href="index.html">INÍCIO</a>
+            <a href="produtos.html">PRODUTOS</a>
+            <a href="sobre.html" class="active">SOBRE</a>
+            <a href="contato.html">CONTATO</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2 class="titulo-secao">Sobre Nós</h2>
+        <p class="subtitulo">Conheça a história da Flow Man</p>
+
+        <section class="nossa-historia">
+            <h4>NOSSA HISTÓRIA</h4>
+            <p>A Flow Man nasceu da paixão por moda masculina urbana e do desejo de oferecer roupas com estilo e qualidade a preços acessíveis. O que começou como uma pequena loja no Instagram, rapidamente se transformou em uma referência.</p>
+            <p>Acreditamos no atendimento personalizado e na proximidade com nossos clientes. Cada peça é cuidadosamente selecionada para garantir que você se sinta bem e confiante.</p>
+        </section>
+
+        <section class="diferenciais">
+            <div class="card-sobre">
+                <div class="icon-box">🛡️</div>
+                <h4>QUALIDADE</h4>
+                <p>Cada peça é selecionada com critério e atenção aos detalhes.</p>
+            </div>
+            <div class="card-sobre">
+                <div class="icon-box">🏙️</div>
+                <h4>ESTILO URBANO</h4>
+                <p>Moda masculina que acompanha o ritmo da cidade.</p>
+            </div>
+            <div class="card-sobre">
+                <div class="icon-box">⚡</div>
+                <h4>ATITUDE</h4>
+                <p>Roupas para quem tem personalidade e não segue tendências.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

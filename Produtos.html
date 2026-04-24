@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Man | Produtos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body {
+        background-color: #f4f4f4;
+        background-image:  linear-gradient(30deg, #eeeeee 12%, transparent 12.5%, transparent 87%, #eeeeee 87.5%, #eeeeee), 
+                           linear-gradient(150deg, #eeeeee 12%, transparent 12.5%, transparent 87%, #eeeeee 87.5%, #eeeeee), 
+                           linear-gradient(30deg, #eeeeee 12%, transparent 12.5%, transparent 87%, #eeeeee 87.5%, #eeeeee), 
+                           linear-gradient(150deg, #eeeeee 12%, transparent 12.5%, transparent 87%, #eeeeee 87.5%, #eeeeee), 
+                           linear-gradient(60deg, #e5e5e5 25%, transparent 25.5%, transparent 75%, #e5e5e5 75%, #e5e5e5), 
+                           linear-gradient(60deg, #e5e5e5 25%, transparent 25.5%, transparent 75%, #e5e5e5 75%, #e5e5e5);
+        background-size: 80px 140px; 
+        background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    }
+        header {position: sticky;top: 0;width: 100%;background: #fff;display: flex;justify-content: space-between;align-items: center;padding: 15px 60px;z-index: 1000;border-bottom: 1px solid #ddd;}
+        .logo { font-family: 'Oswald', sans-serif; font-size: 24px; letter-spacing: 2px; text-decoration: none; color: #000; }
+        nav a { margin-left: 30px; text-decoration: none; color: #666; font-size: 12px; text-transform: uppercase; }
+        nav a:hover, nav a.active { color: #000; font-weight: 700; }
+
+        .container { padding: 80px 10%; text-align: center; }
+        .titulo-secao { font-family: 'Oswald', sans-serif; font-size: 32px; letter-spacing: 2px; text-transform: uppercase; }
+        .subtitulo { color: #888; font-size: 14px; margin: 10px 0 30px; }
+        
+        .filtros { display: flex; justify-content: center; gap: 10px; margin-bottom: 50px; flex-wrap: wrap; }
+        .filtro-btn {background: #ffffff; border: none;padding: 12px 28px;border-radius: 50px; font-size: 11px;cursor: pointer;font-weight: bold;transition: 0.3s;box-shadow: 0 4px 6px rgba(0,0,0,0.05);}
+        .filtro-btn:hover, .filtro-btn.active { background: #000; color: #fff; }
+
+        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; }
+        .card {background: #ffffff; padding: 15px; border-radius: 12px; text-align: left;position: relative;transition: transform 0.3s ease, box-shadow 0.3s ease;  box-shadow: 0 4px 15px rgba(0,0,0,0.05);}
+        .card.hidden { display: none; }
+        .card:hover {transform: translateY(-5px);box-shadow: 0 8px 25px rgba(0,0,0,0.1);}
+
+        .galeria-container { position: relative; width: 100%; height: 350px; overflow: hidden; background: #f0f0f0; }
+        .galeria-container img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.4s ease; }
+        .galeria-container img.active { opacity: 1; position: relative; }
+
+        .nav-seta { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; z-index: 10; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .nav-seta:hover { background: #fff; }
+        .seta-esq { left: 10px; }
+        .seta-dir { right: 10px; }
+
+        .badge { position: absolute; top: 10px; left: 10px; background: #000; color: #fff; padding: 4px 8px; font-size: 10px; text-transform: uppercase; z-index: 20; }
+        .card span { font-size: 10px; color: #aaa; text-transform: uppercase; display: block; margin-top: 15px; }
+        .card h3 { font-family: 'Oswald', sans-serif; font-size: 16px; margin: 5px 0; }
+        .btn-whats { display: block; width: 100%; background: #000; color: #fff; text-align: center; padding: 12px; text-decoration: none; font-size: 11px; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">FLOW MAN</a>
+        <nav>
+            <a href="index.html">INÍCIO</a>
+            <a href="produtos.html" class="active">PRODUTOS</a>
+            <a href="sobre.html">SOBRE</a>
+            <a href="contato.html">CONTATO</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2 class="titulo-secao">Nossos Produtos</h2>
+        <p class="subtitulo">Encontre o estilo perfeito para cada ocasião</p>
+
+        <div class="filtros">
+            <button class="filtro-btn active" data-filter="todos">Todos</button>
+            <button class="filtro-btn" data-filter="camisetas">Camisetas</button>
+            <button class="filtro-btn" data-filter="calças">Calças</button>
+            <button class="filtro-btn" data-filter="bermudas">Bermudas</button>
+            <button class="filtro-btn" data-filter="moletons">Moletons</button>
+            <button class="filtro-btn" data-filter="jaquetas">Jaquetas</button>
+        </div>
+
+        <div class="grid-produtos" id="gridProdutos">
+            
+            <div class="card camisetas" data-promo="true">
+                <div class="badge">Promoção</div>
+                <div class="galeria-container">
+                    <button class="nav-seta seta-esq" onclick="mudarSlide(this, -1)">&#10094;</button>
+                    <img src="camisas/Blusabasica.png" class="active" alt="Foto 1">
+                    <img src="outra_foto_costas.png" alt="Foto 2"> 
+                    <button class="nav-seta seta-dir" onclick="mudarSlide(this, 1)">&#10095;</button>
+                </div>
+                <span>Camisetas</span>
+                <h3>A Camiseta Poliamida Dry</h3>
+                <p><strong>R$ 43,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+            <div class="card calças" data-promo="true">
+                <div class="badge">Promoção</div>
+                <div class="galeria-container">
+                    <button class="nav-seta seta-esq" onclick="mudarSlide(this, -1)">&#10094;</button>
+                    <img src="calça/calçafrente.png" class="active" alt="Foto 1">
+                    <img src="calça/calçacostas.png" alt="Foto 2"> 
+                    <button class="nav-seta seta-dir" onclick="mudarSlide(this, 1)">&#10095;</button>
+                </div>
+                <span>Calças</span>
+                <h3>Calça de Alfaiataria Cinza</h3>
+                <p><strong>R$ 219,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+            <div class="card jaquetas" data-novo="true">
+                <div class="badge">Novo</div>
+                <div class="galeria-container">
+                    <img src="Jaqueta/jaqueta.jpg" class="active" alt="Foto 1">
+                </div>
+                <span>Jaquetas</span>
+                <h3>Jaqueta jens preta</h3>
+                <p><strong>R$ 329,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+            <div class="card moletons" >
+                <div class="galeria-container">
+                    <img src="Moletom/Moletom.jpg" class="active" alt="Foto 1">
+                </div>
+                <span>Moletons</span>
+                <h3>Moletom Careca 3 Cabos Preto</h3>
+                <p><strong>R$ 169,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+             <div class="card moletons" data-novo="true">
+                <div class="badge">Novo</div>
+                <div class="galeria-container">
+                    <img src="Moletom/Moletom2.jpg" class="active" alt="Foto 1">
+                </div>
+                <span>Moletons</span>
+                <h3>Moletom Canguru 3 Cabos</h3>
+                <p><strong>R$ 189,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+            <div class="card bermudas">
+                <div class="galeria-container">
+                    <button class="nav-seta seta-esq" onclick="mudarSlide(this, -1)">&#10094;</button>
+                    <img src="Bermudas/Bermuda logo dry.png" class="active" alt="Foto 1">
+                    <img src="Bermudas/Bermuda logo dry (2).png" alt="Foto 2"> 
+                    <img src="Bermudas/Bermuda Logo dry (3).png" alt="Foto 3"> 
+                    <img src="Bermudas/bermuda logo dry (4).png" alt="Foto 4">
+                    <img src="Bermudas/Bermuda logo dry (5).png" alt="Foto 5">
+                    <button class="nav-seta seta-dir" onclick="mudarSlide(this, 1)">&#10095;</button>
+                </div>
+                <span>Bermudas</span>
+                <h3>Bermuda Dry Fit Logo</h3>
+                <p><strong>R$ 44,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+            <div class="card camisetas">
+                <div class="galeria-container">
+                    <button class="nav-seta seta-esq" onclick="mudarSlide(this, -1)">&#10094;</button>
+                    <img src="camisas/Oversize.png" class="active" alt="Foto 1">
+                    <img src="camisas/Oversize (2).png" alt="Foto 2"> 
+                    <button class="nav-seta seta-dir" onclick="mudarSlide(this, 1)">&#10095;</button>
+                </div>
+                <span>Camisetas</span>
+                <h3>Camiseta Oversized</h3>
+                <p><strong>R$ 89,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+            <div class="card calças">
+                <div class="galeria-container">
+                    <img src="calça/Calça Elastic Flash.png" class="active" alt="Foto 1">
+                </div>
+                <span>Calças</span>
+                <h3>Calça Elastic Flash</h3>
+                <p><strong>R$ 79,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+            <div class="card jaquetas">
+                <div class="galeria-container">
+                    <button class="nav-seta seta-esq" onclick="mudarSlide(this, -1)">&#10094;</button>
+                    <img src="Jaqueta/Cortavento.png" class="active" alt="Foto 1">
+                    <img src="Jaqueta/Cortavento (2).png" alt="Foto 2"> 
+                    <button class="nav-seta seta-dir" onclick="mudarSlide(this, 1)">&#10095;</button>
+                </div>
+                <span>Jaquetas</span>
+                <h3>Jaqueta Corta vento</h3>
+                <p><strong>R$ 89,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+             <div class="card bermudas">
+                <div class="galeria-container">
+                    <button class="nav-seta seta-esq" onclick="mudarSlide(this, -1)">&#10094;</button>
+                    <img src="Bermudas/Elastic.png" class="active" alt="Foto 1">
+                    <img src="Bermudas/Elastic2.png" alt="Foto 2"> 
+                    <button class="nav-seta seta-dir" onclick="mudarSlide(this, 1)">&#10095;</button>
+                </div>
+                <span>Bermudas</span>
+                <h3>Bermuda Elastic Plus</h3>
+                <p><strong>R$ 49,90</strong></p>
+                <a href="https://wa.me/5547988314593" class="btn-whats">COMPRAR VIA WHATSAPP</a>
+            </div>
+
+        </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const filtros = document.querySelectorAll('.filtro-btn');
+            const cards = Array.from(document.querySelectorAll('.card'));
+            const grid = document.getElementById('gridProdutos');
+
+            // --- 1. ORDENAÇÃO: Promo > Novo > Resto ---
+            function ordenarProdutos() {
+                const ordenados = cards.sort((a, b) => {
+                    const aP = a.getAttribute('data-promo') === 'true';
+                    const bP = b.getAttribute('data-promo') === 'true';
+                    const aN = a.getAttribute('data-novo') === 'true';
+                    const bN = b.getAttribute('data-novo') === 'true';
+
+                    if (aP && !bP) return -1;
+                    if (!aP && bP) return 1;
+                    if (aN && !bN) return -1;
+                    if (!aN && bN) return 1;
+                    return 0;
+                });
+                ordenados.forEach(card => grid.appendChild(card));
+            }
+
+            // --- 2. FILTRO E PERSISTÊNCIA (F5) ---
+            function aplicarFiltro(categoria) {
+                filtros.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-filter') === categoria) btn.classList.add('active');
+                });
+
+                cards.forEach(card => {
+                    if (categoria === 'todos' || card.classList.contains(categoria)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                localStorage.setItem('filtroAtivo', categoria);
+            }
+
+            filtros.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    aplicarFiltro(btn.getAttribute('data-filter'));
+                });
+            });
+
+            // Execução inicial
+            ordenarProdutos();
+            const salvo = localStorage.getItem('filtroAtivo') || 'todos';
+            aplicarFiltro(salvo);
+        });
+
+        // LOGICA DA GALERIA
+        function mudarSlide(botao, direcao) {
+            const container = botao.parentElement;
+            const imagens = container.querySelectorAll('img');
+            let atual = 0;
+            imagens.forEach((img, index) => {
+                if (img.classList.contains('active')) atual = index;
+            });
+            imagens[atual].classList.remove('active');
+            let proximo = atual + direcao;
+            if (proximo >= imagens.length) proximo = 0;
+            if (proximo < 0) proximo = imagens.length - 1;
+            imagens[proximo].classList.add('active');
+        }
+    </script>
+</body>
+</html>
